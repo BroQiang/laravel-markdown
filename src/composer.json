@@ -1,0 +1,36 @@
+{
+    "name": "broqiang/laravel-markdown",
+    "description": "Laravel markdown processing",
+    "keywords": ["laravel", "markdown", "broqiang"],
+    "license": "MIT",
+    "authors": [
+    {
+        "name": "BroQiang",
+        "email": "broqiang@qq.com"
+    }],
+    "require":
+    {
+        "php": "~7.0",
+        "laravel/framework": "~5.5",
+        "broqiang/laravel-image": "~1.0"
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "BroQiang\\LaravelMarkdown\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra":
+    {
+        "laravel":
+        {
+            "providers": [
+                "BroQiang\\LaravelMarkdown\\LaravelMarkdownProvider"
+            ]
+        }
+    }
+}
