@@ -12,7 +12,10 @@
     {
         "php": "~7.0",
         "laravel/framework": "~5.5",
-        "broqiang/laravel-image": "~1.0"
+        "broqiang/laravel-image": "~1.0",
+        "erusev/parsedown": "^1.7",
+        "league/html-to-markdown": "^4.6",
+        "mews/purifier": "^2.0"
     },
     "autoload":
     {

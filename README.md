@@ -13,6 +13,13 @@
 
 - [prettify.js]() 代码框添加编号，直接使用的是 `editor.md/lib` 中的
 
+- [erusev/parsedown](https://github.com/erusev/parsedown) 用来将 markdown 转换成 html
+
+- [mews/purifier](https://github.com/mewebstudio/Purifier) markdown 转换 html 的时候进行过滤，方式 XSS 攻击
+
+- [league/html-to-markdown](https://github.com/thephpleague/html-to-markdown) 用来将 html 转换成 markdown
+
+
 ## 安装组件
 
 ```bash
