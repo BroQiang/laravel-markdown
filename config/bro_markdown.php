@@ -12,7 +12,7 @@ return [
     ],
 
     // 预览时的 js
-    'markdown_preview_js' => [
+    'markdown_preview_js'  => [
         'vendor/markdown.show/js/highlight.js',
         'vendor/editormd/lib/prettify.min.js',
     ],
@@ -36,7 +36,9 @@ return [
     // 更多的 上传部分去配置 broqiang/laravel-image 的配置文件
     'upload_path'          => 'editormd',
 
-    'image_prefix'         => '', // 上传图片的前缀
+    'image_prefix'         => 'editormd', // 上传图片的前缀
+
+    'image_max_width'        => 800, // 上传图片的最大高度
 
     // 文本编辑器的配置，可以直接多个，一个数据是一个，模本中的 id 就是 这里的key，如 editormd_id1
     'editormds'            => [

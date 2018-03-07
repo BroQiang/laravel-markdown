@@ -58,7 +58,7 @@ class MarkdownView
     $(function () {
         ' . $item['id'] . ' = editormd("' . $item['id'] . '",{
             width: "' . $item['width'] . '",
-            height: "' . $item['height'] . '",
+            height: ' . $item['height'] . ',
             theme: "' . $item['theme'] . '",
             editorTheme:"default",
             previewTheme:"default",

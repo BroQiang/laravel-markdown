@@ -10,24 +10,18 @@ class EditormdControllers extends Controller
     public function upload(Request $request, BroImage $image)
     {
         if ($request->hasFile('editormd-image-file')) {
-            $url = $image->upload(
-                $request->file('editormd-image-file'),
-                config('bro_markdown.upload_path', 'editormd'),
-                config('bro_markdown.image_prefix', '')
-            );
-
-            if ($url) {
-                return [
-                    'success' => 1,
-                    'url'     => $url,
-                ];
+            $validate = $image->validateUpload($request, 'editormd-image-file');
+            if (isset($validate) && !$validate['success']) {
+                return $validate;
             }
 
-            return [
-                'success' => 0,
-                'message' => '上传失败',
-                'url'     => '',
-            ];
+            $info = $image->upload($request->file('editormd-image-file'), [
+                'folder'      => config('bro_markdown.upload_path'),
+                'file_prefix' => config('bro_markdown.image_prefix'),
+                'max_width'   => config('bro_markdown.image_max_width', ''),
+            ]);
+
+            return $info;
         }
 
     }
