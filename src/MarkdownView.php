@@ -3,6 +3,9 @@ namespace BroQiang\LaravelMarkdown;
 
 class MarkdownView
 {
+
+    protected $autoHeight = false;
+
     public static function markdownPreviewCss()
     {
         return static::getEditorCss(config('bro_markdown.markdown_preview_css'));
@@ -34,10 +37,12 @@ class MarkdownView
         });
     }
 
-    public static function editormdJs()
+    public static function editormdJs($is_width = true)
     {
         $instance   = new static;
         $editormdJs = static::getEditorJs(config('bro_markdown.editormd_js'));
+
+        $instance->autoHeight = $is_width;
 
         $editormds = config('bro_markdown.editormds');
 
@@ -52,8 +57,10 @@ class MarkdownView
         return $editormdJs;
     }
 
-    protected static function formatEditormds($str = '', $item = null)
+    protected function formatEditormds($str = '', $item = null)
     {
+        $autoHeight = $this->autoHeight ? $item['autoHeight'] : 'false' ;
+        
         $str .= '
     $(function () {
         ' . $item['id'] . ' = editormd("' . $item['id'] . '",{
@@ -67,7 +74,7 @@ class MarkdownView
                 return ' . json_encode($item['toolbarIcons']) . '
             },
             codeFold:true,
-            autoHeight : ' . $item['autoHeight'] . ',
+            autoHeight : ' . $autoHeight . ',
             saveHTMLToTextarea: true,
             searchReplace: true,
             imageUpload: ' . $item['imageUpload'] . ',
