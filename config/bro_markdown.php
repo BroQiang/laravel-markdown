@@ -14,7 +14,7 @@ return [
     // 预览时的 js
     'markdown_preview_js'  => [
         'vendor/markdown.show/js/highlight.js',
-        'vendor/editormd/lib/prettify.min.js',
+        'highlightjs-line-numbers.min.js',
     ],
 
     /**
