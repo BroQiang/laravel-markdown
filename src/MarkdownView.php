@@ -16,9 +16,10 @@ class MarkdownView
         $js = static::getEditorJs(config('bro_markdown.markdown_preview_js'));
 
         $js .= '<script>
-    hljs.initHighlightingOnLoad();
-    $("pre").addClass("prettyprint linenums");
-    prettyPrint();
+    $("pre code").each(function(e, t) {
+        hljs.highlightBlock(t);
+    });
+    hljs.initLineNumbersOnLoad();
 </script>';
 
         return $js;
