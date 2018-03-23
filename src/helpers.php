@@ -13,9 +13,9 @@ if (!function_exists('editormd_css')) {
 }
 
 if (!function_exists('editormd_js')) {
-    function editormd_js($is_width = true)
+    function editormd_js($is_width = true, $height = false)
     {
-        return MarkdownView::editormdJs($is_width);
+        return MarkdownView::editormdJs($is_width, $height);
     }
 }
 

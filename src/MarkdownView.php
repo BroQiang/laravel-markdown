@@ -6,6 +6,8 @@ class MarkdownView
 
     protected $autoHeight = false;
 
+    protected $height = false;
+
     public static function markdownPreviewCss()
     {
         return static::getEditorCss(config('bro_markdown.markdown_preview_css'));
@@ -38,12 +40,16 @@ class MarkdownView
         });
     }
 
-    public static function editormdJs($is_width = true)
+    public static function editormdJs($is_width = true, $height = false)
     {
         $instance   = new static;
         $editormdJs = static::getEditorJs(config('bro_markdown.editormd_js'));
 
         $instance->autoHeight = $is_width;
+
+        if ($height) {
+            $instance->height = $height;
+        }
 
         $editormds = config('bro_markdown.editormds');
 
@@ -60,13 +66,15 @@ class MarkdownView
 
     protected function formatEditormds($str = '', $item = null)
     {
-        $autoHeight = $this->autoHeight ? $item['autoHeight'] : 'false' ;
-        
+        $autoHeight = $this->autoHeight ? $item['autoHeight'] : 'false';
+
+        $height = $this->height ?: $item['height'];
+
         $str .= '
     $(function () {
         ' . $item['id'] . ' = editormd("' . $item['id'] . '",{
             width: "' . $item['width'] . '",
-            height: ' . $item['height'] . ',
+            height: ' . $height . ',
             theme: "' . $item['theme'] . '",
             editorTheme:"default",
             previewTheme:"default",
