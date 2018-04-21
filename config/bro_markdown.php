@@ -7,41 +7,44 @@ return [
      */
 
     // 预览时的 css
-    'markdown_preview_css' => [
+    'markdown_preview_css'        => [
         'vendor/markdown.show/css/markdown.css',
     ],
 
     // 预览时的 js
-    'markdown_preview_js'  => [
+    'markdown_preview_js'         => [
         'vendor/markdown.show/js/highlight.js',
-        'highlightjs-line-numbers.min.js',
+        // 'vendor/markdown.show/js/highlightjs-line-numbers.min.js',
     ],
+
+    // 预览是否显示行号, 如果启用，一定要加载上面的 highlightjs-line-numbers.min.js
+    'markdown_preview_line_number' => false,
 
     /**
      * 下面是富文本编辑器 editor.md 相关的配置
      */
 
     // markdown 富文本编辑器的 css 路径
-    'editormd_css'         => [
+    'editormd_css'                => [
         'vendor/editormd/css/editormd.css',
         'vendor/markdown.show/css/markdown.css',
     ],
 
     // markdown 富文本编辑器的 js 路径
-    'editormd_js'          => [
+    'editormd_js'                 => [
         'vendor/editormd/js/editormd.js',
     ],
 
     // 上传文件目录，根目录由依赖的 broqiang/laravel-image  的配置文件决定，这里是二级目录
     // 更多的 上传部分去配置 broqiang/laravel-image 的配置文件
-    'upload_path'          => 'editormd',
+    'upload_path'                 => 'editormd',
 
-    'image_prefix'         => 'editormd', // 上传图片的前缀
+    'image_prefix'                => 'editormd', // 上传图片的前缀
 
-    'image_max_width'        => 800, // 上传图片的最大高度
+    'image_max_width'             => 800, // 上传图片的最大高度
 
     // 文本编辑器的配置，可以直接多个，一个数据是一个，模本中的 id 就是 这里的key，如 editormd_id1
-    'editormds'            => [
+    'editormds'                   => [
         'editormd_id' => [
             'id'             => 'editormd_id', // 模板中使用的 id，这里要求和 key 相同
             'width'          => '100%', // 编辑器宽度

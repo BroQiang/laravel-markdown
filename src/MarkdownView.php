@@ -17,12 +17,14 @@ class MarkdownView
     {
         $js = static::getEditorJs(config('bro_markdown.markdown_preview_js'));
 
+        $lineNumbers = config('bro_markdown.markdown_preview_line_number') ? 'hljs.initLineNumbersOnLoad();' : '';
+
         $js .= '<script>
     $("pre code").each(function(e, t) {
         hljs.highlightBlock(t);
-    });
-    hljs.initLineNumbersOnLoad();
-</script>';
+    });' . 
+    $lineNumbers .
+'</script>';
 
         return $js;
     }
